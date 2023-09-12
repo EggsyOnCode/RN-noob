@@ -1,19 +1,22 @@
-import { Text, View, Button } from "react-native";
+import { Text, View, Button, Image, StyleSheet } from "react-native";
 import React from "react";
-
 export default function ReviewDetails({ navigation, route }) {
-  console.log("inside rd rn");
-  const payload = route.params ? route.params.payload : null;
-  console.log(payload);
   return (
     <View className="p-26">
-      {payload ? (
+      <View className="p-5 drop-shadow-xl rounded-lg bg-red-200 m-3">
         <Text className="text-center font-bold text-[30px] m-10">
-          {payload.body}
+          {route.params ? route.params.payload.body : "nothing here"}
         </Text>
-      ) : (
-        <Text className="text-center">Nothing here</Text>
-      )}
+
+        <Text className="text-center font-bold text-[30px]">
+          Rating:
+        </Text>
+        <Text className="text-center  font-bold text-[30px]">
+          {" "}
+          {route.params ? route.params.payload.rating : "nothing here"}
+        </Text>
+      </View>
     </View>
   );
 }
+
