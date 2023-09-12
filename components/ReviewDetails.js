@@ -1,11 +1,19 @@
 import { Text, View, Button } from "react-native";
 import React from "react";
 
-export default function ReviewDetails({navigation}) {
+export default function ReviewDetails({ navigation, route }) {
+  console.log("inside rd rn");
+  const payload = route.params ? route.params.payload : null;
+  console.log(payload);
   return (
     <View className="p-26">
-      <Text className="text-center font-bold text-[30px]">Review Details</Text>
-      <Button title="Home" onPress={() => navigation.navigate("Home")}></Button>
+      {payload ? (
+        <Text className="text-center font-bold text-[30px] m-10">
+          {payload.body}
+        </Text>
+      ) : (
+        <Text className="text-center">Nothing here</Text>
+      )}
     </View>
   );
 }
